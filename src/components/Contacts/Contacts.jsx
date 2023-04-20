@@ -10,7 +10,7 @@ export default function Contacts() {
     const dispatch = useDispatch()
 
     const filtered = React.useMemo(
-        () => contacts.items.filter(contact => contact.name.toLowerCase().includes(filter.trim().toLowerCase())),
+        () => contacts.filter(contact => contact.name.toLowerCase().includes(filter.trim().toLowerCase())),
         [filter, contacts]
     );
 
