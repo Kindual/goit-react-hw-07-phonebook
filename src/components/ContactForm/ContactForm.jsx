@@ -18,7 +18,7 @@ export default function ContactForm() {
             phone: number.trim(),
         }
         
-        if (contacts.items.findIndex(cont => cont.name.trim().toLowerCase() === contact.name.trim().toLowerCase()) >= 0) {
+        if (contacts.findIndex(cont => cont.name.trim().toLowerCase() === contact.name.trim().toLowerCase()) >= 0) {
             return alert(`${name} is already in contacts`)
         }
         dispatch(addContact(contact))
