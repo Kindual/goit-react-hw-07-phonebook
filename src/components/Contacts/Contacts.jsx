@@ -16,7 +16,7 @@ export default function Contacts() {
 
     return (
         <ul className={css.contactList}>
-            {filtered.map(contact =>
+            {filtered.length > 0 && filtered.map(contact =>
                 <li key={contact.id} className={css.contactItem}>
                     <p
                         className={css.contactName}> {contact.name}: {contact.phone}</p>
