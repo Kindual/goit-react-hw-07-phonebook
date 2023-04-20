@@ -1,7 +1,8 @@
 import React from 'react'
 import css from './Contacts.module.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact, selectContacts, selectFilter } from 'redux/contactSlice';
+import { selectContacts, selectFilter } from 'redux/contactSlice';
+import { deleteContact } from 'redux/contactsOperations';
 
 export default function Contacts() {
     const contacts = useSelector(selectContacts);
@@ -9,7 +10,7 @@ export default function Contacts() {
     const dispatch = useDispatch()
 
     const filtered = React.useMemo(
-        () => contacts.filter(contact => contact.name.toLowerCase().includes(filter.trim().toLowerCase())),
+        () => contacts.items.filter(contact => contact.name.toLowerCase().includes(filter.trim().toLowerCase())),
         [filter, contacts]
     );
 
@@ -18,7 +19,7 @@ export default function Contacts() {
             {filtered.map(contact =>
                 <li key={contact.id} className={css.contactItem}>
                     <p
-                        className={css.contactName}> {contact.name}: {contact.number}</p>
+                        className={css.contactName}> {contact.name}: {contact.phone}</p>
                     <button
                         type='button'
                         onClick={() => dispatch(deleteContact(contact.id))}
