@@ -6,12 +6,12 @@ import { deleteContact } from 'redux/contactsOperations';
 
 export default function Contacts() {
     const contacts = useSelector(selectContacts);
-    const filter = useSelector(selectFilter);
+    const filtering = useSelector(selectFilter);
     const dispatch = useDispatch()
 
     const filtered = React.useMemo(
-        () => contacts.filter(contact => contact.name.toLowerCase().includes(filter.trim().toLowerCase())),
-        [filter, contacts]
+        () => contacts.filter(contact => contact.name.toLowerCase().includes(filtering.trim().toLowerCase())),
+        [contacts, filtering]
     );
 
     return (
